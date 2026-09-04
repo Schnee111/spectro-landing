@@ -1,134 +1,739 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-trust-tier="B">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NEXUS//CYPHER — a sleek cyber interface. Enter the grid." />
-  <title>NEXUS//CYPHER — Enter the Grid</title>
+  <meta name="description" content="TO BE HERO X // PERSONA 3 RELOAD Tactical Anime HUD. Real-time Trust Value Matrix, Kinetic Diagonal Actions, and Operative Dossier." />
+  <title>HERO X // KINETIC HUD [P3R PROTOCOL]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <!-- Ambient particle field -->
-  <canvas id="grid" aria-hidden="true"></canvas>
-  <div class="scanlines" aria-hidden="true"></div>
+<body class="anime-hud">
+  <!-- Halftone Screentone Texture & Background Grids -->
+  <div class="screen-halftone" aria-hidden="true"></div>
+  <div class="speedlines-layer" id="speedlines" aria-hidden="true"></div>
+  <div class="vignette-layer" aria-hidden="true"></div>
+  
+  <!-- Interactive Comic SFX Overlay Container -->
+  <div class="sfx-overlay" id="sfx-overlay" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <a class="brand" href="#top">
-      <span class="brand-glyph">◢</span>
-      <span class="brand-name">NEXUS//CYPHER</span>
-    </a>
-    <nav class="nav" aria-label="Primary">
-      <a href="#manifesto">Manifesto</a>
-      <a href="#modules">Modules</a>
-      <a href="#status">Status</a>
-      <a href="#contact" class="nav-cta">Initiate</a>
-    </nav>
+  <!-- Full-Screen Tactical Impact Flash -->
+  <div class="impact-flash" id="impact-flash" aria-hidden="true"></div>
+
+  <!-- Top Tactical Mission Bar -->
+  <header class="tactical-header">
+    <div class="header-inner">
+      <div class="brand-cluster">
+        <div class="brand-symbol-tag">
+          <span class="symbol-cut">X</span>
+        </div>
+        <div class="brand-text-block">
+          <div class="brand-title">
+            <span class="brand-main">TO BE HERO</span>
+            <span class="brand-x">X</span>
+            <span class="brand-sub">// P3R HUD</span>
+          </div>
+          <div class="brand-telemetry">
+            <span class="status-pip pulse"></span>
+            <span class="telemetry-label">SYSTEM: ONLINE</span>
+            <span class="sep">/</span>
+            <span class="telemetry-channel" id="clock-display">00:00:00</span>
+            <span class="sep">/</span>
+            <span class="telemetry-freq">FREQ: 144.82 MHz</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Dynamic Marquee Tape -->
+      <div class="tactical-ticker-container" aria-hidden="true">
+        <div class="tactical-ticker-track">
+          <span>/// PUBLIC TRUST INDEX ACTIVE</span>
+          <span>/// HERO RANKINGS REALTIME MUTATION</span>
+          <span>/// CITIZEN BELIEF FUELS APEX COMBAT</span>
+          <span>/// THREAT CLASS: OMEGA DETECTED</span>
+          <span>/// PROTOCOL P3R: ALL-OUT READY</span>
+          <span>/// PUBLIC TRUST INDEX ACTIVE</span>
+          <span>/// HERO RANKINGS REALTIME MUTATION</span>
+        </div>
+      </div>
+
+      <!-- Header Controls -->
+      <div class="header-actions">
+        <button type="button" class="chamfer-btn audio-btn" id="audio-toggle" title="Toggle Synthesized Anime SFX" aria-pressed="true">
+          <span class="btn-slice"></span>
+          <span class="btn-text"><span class="audio-icon" id="audio-icon">AUDIO [ON]</span></span>
+        </button>
+        <a href="#dossier" class="chamfer-btn nav-action-btn">
+          <span class="btn-slice"></span>
+          <span class="btn-text">ROSTER // 03</span>
+        </a>
+        <button type="button" class="chamfer-btn alert-btn" id="burst-allout-btn">
+          <span class="btn-slice"></span>
+          <span class="btn-text">ALL-OUT // 突撃</span>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <p class="eyebrow">// SECTOR 7 · UPLINK SECURE</p>
-      <h1 class="hero-title">
-        <span class="line">DECRYPT THE</span>
-        <span class="line line-accent">FUTURE.</span>
-      </h1>
-      <p class="hero-sub">
-        A precision-engineered cyber interface for operators who demand
-        speed, clarity, and zero noise. Built for the edge of the grid.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#status">
-          <span class="btn-label">Initialize Uplink</span>
-          <span class="btn-glow" aria-hidden="true"></span>
-        </a>
-        <a class="btn btn-ghost" href="#manifesto">Read the Dossier</a>
+  <!-- Main HUD Layout -->
+  <main class="hud-main">
+    
+    <!-- Hero Stage: Skewed Giant Billboard & Tactical Ribbon -->
+    <section class="hero-stage">
+      <div class="hero-stage-bg-diagonal" aria-hidden="true"></div>
+      <div class="stage-left">
+        <div class="rank-eyebrow">
+          <span class="tag-badge">METROPOLITAN DEFENSE CODE 07</span>
+          <span class="slash-deco">//</span>
+          <span class="tag-accent" id="tier-indicator">TIER-B // COMBAT ACTIVE</span>
+        </div>
+
+        <h1 class="hero-title-kinetic">
+          <span class="title-line title-line-1" data-text="FAITH IS POWER">FAITH IS POWER</span>
+          <span class="title-line title-line-2" data-text="ASCEND TO GOD TIER">
+            <span class="text-hollow">ASCEND</span>
+            <span class="text-highlight">TO GOD TIER</span>
+          </span>
+        </h1>
+
+        <p class="hero-desc">
+          In this city, hero strength is mathematically determined by citizen belief. 
+          When public trust accelerates, tactical parameters mutate instantly. 
+          Zero soft compromises. Only kinetic supremacy.
+        </p>
+
+        <!-- Quick Telemetry Badges -->
+        <div class="hero-metrics-strip">
+          <div class="metric-ribbon">
+            <span class="m-label">SYNC RATIO</span>
+            <span class="m-val" id="quick-sync-val">98.4%</span>
+            <div class="m-bar"><div class="m-bar-fill" id="quick-sync-bar" style="width: 98%;"></div></div>
+          </div>
+          <div class="metric-ribbon">
+            <span class="m-label">AURA RESONANCE</span>
+            <span class="m-val" id="quick-aura-val">4.28x</span>
+            <div class="m-bar"><div class="m-bar-fill" id="quick-aura-bar" style="width: 72%;"></div></div>
+          </div>
+          <div class="metric-ribbon">
+            <span class="m-label">THREAT SUPPRESSION</span>
+            <span class="m-val" id="quick-suppress-val">LEVEL 4</span>
+            <div class="m-bar"><div class="m-bar-fill" id="quick-suppress-bar" style="width: 85%;"></div></div>
+          </div>
+        </div>
+
+        <!-- Fast Action Triggers -->
+        <div class="hero-button-row">
+          <button type="button" class="action-trigger-btn primary-trigger" id="engage-btn">
+            <span class="trigger-edge"></span>
+            <span class="trigger-content">
+              <span class="t-sub">TACTICAL ENGAGEMENT</span>
+              <span class="t-main">ENGAGE PROTOCOL</span>
+            </span>
+            <span class="trigger-kanji" aria-hidden="true">起動</span>
+          </button>
+
+          <button type="button" class="action-trigger-btn secondary-trigger" id="sfx-burst-btn">
+            <span class="trigger-edge"></span>
+            <span class="trigger-content">
+              <span class="t-sub">COMIC IMPACT BURST</span>
+              <span class="t-main">TRIGGER SFX [DON!]</span>
+            </span>
+            <span class="trigger-kanji" aria-hidden="true">轟音</span>
+          </button>
+        </div>
       </div>
-      <dl class="hero-stats">
-        <div class="stat">
-          <dt>LATENCY</dt>
-          <dd>1.2ms</dd>
-        </div>
-        <div class="stat">
-          <dt>UPTIME</dt>
-          <dd>99.99%</dd>
-        </div>
-        <div class="stat">
-          <dt>NODES</dt>
-          <dd>8.4M</dd>
-        </div>
-      </dl>
-    </section>
 
-    <!-- Manifesto -->
-    <section class="manifesto" id="manifesto">
-      <h2 class="section-title"><span class="idx">01</span> MANIFESTO</h2>
-      <p class="lede">
-        The old interfaces whisper. Ours <em>transmits</em> — every pixel
-        deliberate, every frame animated with intent, every interaction
-        traced in Spectro Cyan.
-      </p>
-    </section>
+      <!-- Hero Stage Right: Live Animated Combat Target HUD Graphic -->
+      <div class="stage-right">
+        <div class="kinetic-target-frame">
+          <div class="target-corner tl"></div>
+          <div class="target-corner tr"></div>
+          <div class="target-corner bl"></div>
+          <div class="target-corner br"></div>
 
-    <!-- Modules / feature cards -->
-    <section class="modules" id="modules">
-      <h2 class="section-title"><span class="idx">02</span> MODULES</h2>
-      <div class="cards">
-        <article class="card">
-          <span class="card-tag">DATA</span>
-          <h3>Ghost Tracing</h3>
-          <p>Follow signal signatures across layers of encrypted traffic with real-time route mapping.</p>
-        </article>
-        <article class="card">
-          <span class="card-tag">DEFENSE</span>
-          <h3>Zero-Day Shielding</h3>
-          <p>Adaptive countermeasures that learn each intrusion pattern and neutralize it before impact.</p>
-        </article>
-        <article class="card">
-          <span class="card-tag">OPS</span>
-          <h3>Quantum Relay</h3>
-          <p>Route critical payloads through entangled node clusters for unbreakable, instant delivery.</p>
-        </article>
-      </div>
-    </section>
+          <!-- Stylized Tactical Silhouette SVG Preview -->
+          <div class="target-silhouette-wrap" id="stage-silhouette-wrap">
+            <div class="silhouette-aura" id="stage-aura"></div>
+            <div class="silhouette-halftone"></div>
+            <div class="silhouette-graphic" id="stage-graphic" aria-label="Active Operative Silhouette">
+              <!-- Inline High-impact stylized vector art -->
+              <svg viewBox="0 0 400 450" class="hero-svg-art" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--accent-primary)" />
+                    <stop offset="100%" stop-color="var(--accent-secondary)" />
+                  </linearGradient>
+                  <pattern id="dotPattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1.8" fill="var(--accent-primary)" opacity="0.35" />
+                  </pattern>
+                </defs>
 
-    <!-- Interactive status console -->
-    <section class="console" id="status">
-      <h2 class="section-title"><span class="idx">03</span> SYSTEM STATUS</h2>
-      <div class="console-panel">
-        <div class="console-head">
-          <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="console-file">uplink_console.sh</span>
-        </div>
-        <div class="console-body">
-          <p class="log-line">&gt; handshake established… <span class="ok">OK</span></p>
-          <p class="log-line">&gt; authenticating operator… <span class="ok">OK</span></p>
-          <p class="log-line">&gt; core integrity scan… <span class="pulse-text" id="integrity">VERIFYING</span></p>
+                <!-- Angled Energy Slits in Background -->
+                <polygon points="50,20 380,60 340,110 20,80" fill="url(#dotPattern)" opacity="0.8" />
+                <polygon points="20,150 360,200 310,230 10,190" fill="var(--accent-tertiary)" opacity="0.15" />
+                <polygon points="80,300 420,340 370,390 40,360" fill="var(--accent-secondary)" opacity="0.25" />
 
-          <div class="status-card" id="status-card">
-            <div class="status-readout">
-              <span class="status-dot" id="status-dot" aria-hidden="true"></span>
-              <div>
-                <span class="status-label">UPLINK</span>
-                <output class="status-value" id="status-value">ONLINE</output>
-              </div>
-              <span class="status-band" id="status-band">SECURE</span>
+                <!-- Dynamic Character Angular Silhouette Layers -->
+                <g class="character-vector-group" id="vector-hero-x">
+                  <!-- Scarf / Energy Ribbon -->
+                  <path d="M120,140 Q60,190 20,320 Q90,260 160,220 Z" fill="var(--accent-secondary)" opacity="0.85" />
+                  <path d="M160,150 Q100,280 40,430 Q120,350 190,270 Z" fill="var(--accent-secondary)" opacity="0.95" />
+                  <!-- Coat / Torso Geometry -->
+                  <polygon points="140,160 270,145 320,360 280,440 180,450 110,380" fill="#06131f" stroke="var(--accent-primary)" stroke-width="3" />
+                  <!-- Inner Chest Plate -->
+                  <polygon points="175,180 240,170 260,280 165,290" fill="url(#heroGradient)" opacity="0.9" />
+                  <polygon points="190,200 230,195 240,250 180,255" fill="#0b0f14" />
+                  <!-- Hero Mask & Head Silhouette -->
+                  <polygon points="170,120 225,85 255,120 235,160 160,155" fill="#06131f" stroke="var(--accent-primary)" stroke-width="2" />
+                  <polygon points="180,105 240,80 250,95 210,115" fill="var(--accent-primary)" />
+                  <!-- Eye Glow Visor -->
+                  <polygon points="185,125 240,110 232,122 195,132" fill="#ffffff" class="eye-glow" filter="drop-shadow(0 0 8px var(--accent-primary))" />
+                  <!-- Trenchcoat Tails -->
+                  <polygon points="270,220 370,280 395,440 310,380" fill="#0b0f14" stroke="var(--accent-secondary)" stroke-width="2" />
+                  <!-- Manga Speed Shards -->
+                  <line x1="300" y1="90" x2="380" y2="40" stroke="var(--accent-primary)" stroke-width="3" />
+                  <line x1="320" y1="120" x2="395" y2="85" stroke="var(--accent-secondary)" stroke-width="2" />
+                  <line x1="70" y1="260" x2="10" y2="290" stroke="var(--accent-tertiary)" stroke-width="3" />
+                </g>
+              </svg>
             </div>
-            <p class="status-meta" id="status-meta">
-              All systems nominal. Encrypted tunnel active across 8,400 relay nodes.
-            </p>
-            <button class="btn btn-toggle" id="toggle-btn" type="button" aria-pressed="true">
-              <span class="btn-label">Toggle Uplink</span>
-            </button>
+          </div>
+
+          <!-- Stance HUD Floating Tags -->
+          <div class="target-tag-layer">
+            <div class="live-tag live-tag-top">
+              <span class="tag-bullet">◆</span>
+              <span class="tag-title" id="stage-character-name">HERO X // UNRANKED APEX</span>
+            </div>
+            <div class="live-tag live-tag-bottom">
+              <span class="tag-label">TRUST POWER:</span>
+              <span class="tag-highlight" id="stage-power-tier">HIGH RESONANCE [TIER-B]</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Interactive Component 1: Hero Trust & Rank Gauge (TO BE HERO X Mechanic) -->
+    <section class="hud-section trust-matrix-section" id="trust-system">
+      <div class="section-badge-bar">
+        <div class="badge-cut-tag">SYSTEM 01</div>
+        <h2 class="section-heading">PUBLIC TRUST VALUE MATRIX</h2>
+        <div class="section-line"></div>
+        <div class="section-tag-right">REAL-TIME CIVIC CONVERGENCE</div>
+      </div>
+
+      <div class="trust-console-box">
+        <div class="trust-top-telemetry">
+          <div class="trust-stat-card">
+            <div class="stat-card-header">
+              <span class="card-idx">01</span>
+              <span class="card-title">CURRENT CITIZEN TRUST</span>
+            </div>
+            <div class="stat-big-val">
+              <span class="val-number" id="trust-val-display">640,000</span>
+              <span class="val-unit">TV</span>
+            </div>
+            <div class="stat-sub-detail">
+              <span>PEAK CONFIDENCE: </span>
+              <span class="text-glow" id="trust-percent-display">64%</span>
+            </div>
+          </div>
+
+          <div class="trust-stat-card highlight-card">
+            <div class="stat-card-header">
+              <span class="card-idx">02</span>
+              <span class="card-title">OFFICIAL HERO RANK</span>
+            </div>
+            <div class="stat-big-val rank-badge-val">
+              <span class="rank-letter" id="rank-letter-display">RANK B</span>
+            </div>
+            <div class="stat-sub-detail">
+              <span id="rank-title-display">TITLED: METROPOLITAN ENFORCER</span>
+            </div>
+          </div>
+
+          <div class="trust-stat-card">
+            <div class="stat-card-header">
+              <span class="card-idx">03</span>
+              <span class="card-title">COMBAT SCALING MULTIPLIER</span>
+            </div>
+            <div class="stat-big-val">
+              <span class="val-number" id="multiplier-display">x3.85</span>
+            </div>
+            <div class="stat-sub-detail">
+              <span>REALITY DISTORTION: </span>
+              <span class="text-glow" id="distortion-display">STABLE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Master Interactive Trust Slider & Tier Stepper -->
+        <div class="trust-slider-container">
+          <div class="slider-labels">
+            <div class="tier-mark" data-tier="E">
+              <span class="tier-code">RANK E</span>
+              <span class="tier-desc">STREET CIV</span>
+            </div>
+            <div class="tier-mark" data-tier="D">
+              <span class="tier-code">RANK D</span>
+              <span class="tier-desc">ROOKIE</span>
+            </div>
+            <div class="tier-mark active-tier" data-tier="C">
+              <span class="tier-code">RANK C</span>
+              <span class="tier-desc">VIGILANTE</span>
+            </div>
+            <div class="tier-mark" data-tier="B">
+              <span class="tier-code">RANK B</span>
+              <span class="tier-desc">ENFORCER</span>
+            </div>
+            <div class="tier-mark" data-tier="A">
+              <span class="tier-code">RANK A</span>
+              <span class="tier-desc">APEX HERO</span>
+            </div>
+            <div class="tier-mark" data-tier="X">
+              <span class="tier-code">RANK X</span>
+              <span class="tier-desc">UNRANKED GOD</span>
+            </div>
+          </div>
+
+          <!-- Custom Chamfered Anime Range Track -->
+          <div class="slider-rail-wrap">
+            <input 
+              type="range" 
+              id="trust-slider" 
+              class="trust-range-input" 
+              min="0" 
+              max="100" 
+              value="64" 
+              step="1"
+              aria-label="Hero Trust Value Slider"
+            />
+            <div class="rail-fill-indicator" id="rail-fill" style="width: 64%;"></div>
+            <div class="rail-hazard-lines" aria-hidden="true"></div>
+          </div>
+
+          <!-- Fast Jump Preset Buttons -->
+          <div class="trust-presets-row">
+            <span class="preset-label">TACTICAL OVERRIDE:</span>
+            <button type="button" class="preset-btn" data-val="10">LOW TRUST [10%]</button>
+            <button type="button" class="preset-btn" data-val="35">COMBAT [35%]</button>
+            <button type="button" class="preset-btn active" data-val="64">CRITICAL [64%]</button>
+            <button type="button" class="preset-btn" data-val="88">HEROIC [88%]</button>
+            <button type="button" class="preset-btn god-mode-btn" data-val="100">OVERDRIVE RANK X [100%]</button>
+          </div>
+        </div>
+
+        <!-- Trust System Feedback Strip -->
+        <div class="trust-feedback-strip">
+          <div class="feedback-item">
+            <span class="fb-icon">▶</span>
+            <span class="fb-key">PUBLIC PERCEPTION:</span>
+            <span class="fb-val" id="fb-perception">"DEFENDER OF SHINJUKU DISTRICT"</span>
+          </div>
+          <div class="feedback-item">
+            <span class="fb-icon">▶</span>
+            <span class="fb-key">SPECIAL ATTRIBUTE:</span>
+            <span class="fb-val" id="fb-attribute">KINETIC IMPACT FORCE UNLOCKED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Component 2: Persona 3 Reload Diagonal Action Menu -->
+    <section class="hud-section persona-menu-section" id="actions">
+      <div class="section-badge-bar">
+        <div class="badge-cut-tag coral-tag">SYSTEM 02</div>
+        <h2 class="section-heading">PERSONA TACTICAL ACTION WHEEL</h2>
+        <div class="section-line"></div>
+        <div class="section-tag-right">P3R BATTLE SYSTEM // DIAGONAL ENGAGE</div>
+      </div>
+
+      <div class="persona-menu-layout">
+        <div class="persona-commands-column" role="menu" aria-label="Tactical Command Menu">
+          
+          <!-- Command 1: ATTACK / STRIKE -->
+          <div class="p3-ribbon-btn active" role="menuitem" tabindex="0" data-command="ATTACK" data-sfx="SLASH" data-kanji="攻撃">
+            <div class="ribbon-polygon">
+              <div class="ribbon-index">01</div>
+              <div class="ribbon-title-wrap">
+                <span class="ribbon-sub">MELEE // PHYSICAL</span>
+                <span class="ribbon-main">ATTACK STRIKE</span>
+              </div>
+              <div class="ribbon-sfx-tag">斬撃 // SLASH!</div>
+              <div class="ribbon-arrow">▶</div>
+            </div>
+          </div>
+
+          <!-- Command 2: PERSONA / HEROCRAFT -->
+          <div class="p3-ribbon-btn" role="menuitem" tabindex="0" data-command="PERSONA" data-sfx="SUMMON" data-kanji="召喚">
+            <div class="ribbon-polygon">
+              <div class="ribbon-index">02</div>
+              <div class="ribbon-title-wrap">
+                <span class="ribbon-sub">INNER AVATAR // RESONANCE</span>
+                <span class="ribbon-main">PERSONA SUMMON</span>
+              </div>
+              <div class="ribbon-sfx-tag">召喚 // AWAKEN!</div>
+              <div class="ribbon-arrow">▶</div>
+            </div>
+          </div>
+
+          <!-- Command 3: OVERDRIVE / BURST -->
+          <div class="p3-ribbon-btn" role="menuitem" tabindex="0" data-command="OVERDRIVE" data-sfx="BURST" data-kanji="極限">
+            <div class="ribbon-polygon">
+              <div class="ribbon-index">03</div>
+              <div class="ribbon-title-wrap">
+                <span class="ribbon-sub">MAX GAUGE CONSUMPTION</span>
+                <span class="ribbon-main">OVERDRIVE BURST</span>
+              </div>
+              <div class="ribbon-sfx-tag">轟音 // CRITICAL!</div>
+              <div class="ribbon-arrow">▶</div>
+            </div>
+          </div>
+
+          <!-- Command 4: TACTICS / SHIFT -->
+          <div class="p3-ribbon-btn" role="menuitem" tabindex="0" data-command="TACTICS" data-sfx="TACTICS" data-kanji="作戦">
+            <div class="ribbon-polygon">
+              <div class="ribbon-index">04</div>
+              <div class="ribbon-title-wrap">
+                <span class="ribbon-sub">BATON TOUCH // SQUAD COORD</span>
+                <span class="ribbon-main">TACTICAL SHIFT</span>
+              </div>
+              <div class="ribbon-sfx-tag">連携 // SHIFT!</div>
+              <div class="ribbon-arrow">▶</div>
+            </div>
+          </div>
+
+          <!-- Command 5: DEFEND / AEGIS -->
+          <div class="p3-ribbon-btn" role="menuitem" tabindex="0" data-command="DEFEND" data-sfx="SHIELD" data-kanji="防御">
+            <div class="ribbon-polygon">
+              <div class="ribbon-index">05</div>
+              <div class="ribbon-title-wrap">
+                <span class="ribbon-sub">BARRIER REINFORCE</span>
+                <span class="ribbon-main">AEGIS GUARD</span>
+              </div>
+              <div class="ribbon-sfx-tag">鉄壁 // GUARD!</div>
+              <div class="ribbon-arrow">▶</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Command Execution Readout Panel -->
+        <div class="persona-output-panel">
+          <div class="output-panel-header">
+            <div class="header-led red-led"></div>
+            <span class="panel-tag">COMMAND EXECUTION MATRIX</span>
+            <span class="panel-code">[ENGAGE-READY]</span>
+          </div>
+
+          <div class="output-body">
+            <div class="kanji-watermark" id="action-kanji-bg" aria-hidden="true">攻撃</div>
+            <div class="output-command-headline">
+              <span class="cmd-type" id="action-type-display">PHYSICAL OFFENSIVE</span>
+              <h3 class="cmd-name" id="action-name-display">ATTACK // CRITICAL STRIKE</h3>
+            </div>
+
+            <p class="cmd-flavor" id="action-desc-display">
+              Unleashes a direct kinetic heavy strike fueled by real-time citizen belief. 
+              Armor piercing modifier active when trust level exceeds 50%.
+            </p>
+
+            <div class="cmd-stats-grid">
+              <div class="c-stat">
+                <span class="c-stat-label">POWER COST</span>
+                <span class="c-stat-val" id="action-cost-display">0 SP / 15% HP</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-stat-label">IMPACT CLASS</span>
+                <span class="c-stat-val" id="action-impact-display">HEAVY SLASH</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-stat-label">SUCCESS CHANCE</span>
+                <span class="c-stat-val" id="action-crit-display">94.2%</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-stat-label">TARGET TARGETING</span>
+                <span class="c-stat-val" id="action-target-display">ALL ENEMIES</span>
+              </div>
+            </div>
+
+            <div class="panel-action-footer">
+              <button type="button" class="execute-cmd-btn" id="execute-action-btn">
+                <span class="exec-slice"></span>
+                <span class="exec-text">EXECUTE COMMAND // [SPACE]</span>
+                <span class="exec-icon">⚡</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Component 3: Hero Dossier Roster (Character / Operative Selector) -->
+    <section class="hud-section dossier-section" id="dossier">
+      <div class="section-badge-bar">
+        <div class="badge-cut-tag lime-tag">SYSTEM 03</div>
+        <h2 class="section-heading">TACTICAL OPERATIVE DOSSIER</h2>
+        <div class="section-line"></div>
+        <div class="section-tag-right">ROSTER SELECTION // SYNC RATE 100%</div>
+      </div>
+
+      <!-- Operative Tabs: 3 Operatives from Spec -->
+      <div class="dossier-nav-tabs">
+        <button type="button" class="dossier-tab active" data-operative="hero-x">
+          <span class="tab-cut"></span>
+          <span class="tab-index">OP // 01</span>
+          <span class="tab-name">HERO X</span>
+          <span class="tab-badge">UNRANKED APEX</span>
+        </button>
+
+        <button type="button" class="dossier-tab" data-operative="cypher">
+          <span class="tab-cut"></span>
+          <span class="tab-index">OP // 02</span>
+          <span class="tab-name">CYPHER</span>
+          <span class="tab-badge">RANK 03 BLADE</span>
+        </button>
+
+        <button type="button" class="dossier-tab" data-operative="spectro">
+          <span class="tab-cut"></span>
+          <span class="tab-index">OP // 03</span>
+          <span class="tab-name">SPECTRO</span>
+          <span class="tab-badge">CORE TANK</span>
+        </button>
+      </div>
+
+      <!-- Dossier Sheet -->
+      <div class="dossier-sheet-card">
+        
+        <!-- Left: Operative Visual Box & Silhouette Art -->
+        <div class="dossier-visual-column">
+          <div class="dossier-avatar-frame">
+            <div class="avatar-bg-halftone" aria-hidden="true"></div>
+            <div class="avatar-frame-corner top-left"></div>
+            <div class="avatar-frame-corner top-right"></div>
+            <div class="avatar-frame-corner bottom-left"></div>
+            <div class="avatar-frame-corner bottom-right"></div>
+
+            <!-- Dynamic Silhouette Art for active character -->
+            <div class="avatar-svg-wrap" id="dossier-svg-container">
+              <!-- Rendered via app.js / SVG profiles -->
+            </div>
+
+            <div class="avatar-badge-tag">
+              <span class="tag-status-light"></span>
+              <span class="tag-label" id="op-code-display">HERO X // UNRANKED</span>
+            </div>
+          </div>
+
+          <div class="dossier-vocal-bubble">
+            <div class="bubble-arrow" aria-hidden="true"></div>
+            <div class="bubble-header">TACTICAL BATTLE COMMS // LIVE</div>
+            <p class="bubble-quote" id="op-quote-display">
+              "Belief is currency. You believe in me, and I will shatter this nightmare."
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Telemetry, Radar, Stats, Lore -->
+        <div class="dossier-data-column">
+          
+          <div class="dossier-header-block">
+            <div class="dossier-rank-pill" id="op-rank-pill">GLOBAL RANK: UNRANKED [ANOMALY]</div>
+            <h3 class="dossier-hero-name" id="op-name-display">HERO X</h3>
+            <div class="dossier-class-tag" id="op-class-display">CLASS: APEX PROTAGONIST // INFINITE TRUST SCALER</div>
+          </div>
+
+          <!-- Parameter Gauges -->
+          <div class="stat-gauges-cluster">
+            
+            <div class="gauge-row">
+              <div class="g-info">
+                <span class="g-name">ATTACK POWER (ATK)</span>
+                <span class="g-val" id="g-atk-val">999</span>
+              </div>
+              <div class="g-track">
+                <div class="g-fill" id="g-atk-bar" style="width: 98%;"></div>
+              </div>
+            </div>
+
+            <div class="gauge-row">
+              <div class="g-info">
+                <span class="g-name">COMBAT AGILITY (SPD)</span>
+                <span class="g-val" id="g-spd-val">880</span>
+              </div>
+              <div class="g-track">
+                <div class="g-fill" id="g-spd-bar" style="width: 88%;"></div>
+              </div>
+            </div>
+
+            <div class="gauge-row">
+              <div class="g-info">
+                <span class="g-name">BELIEF RESONANCE (SYNC)</span>
+                <span class="g-val" id="g-sync-val">960</span>
+              </div>
+              <div class="g-track">
+                <div class="g-fill" id="g-sync-bar" style="width: 96%;"></div>
+              </div>
+            </div>
+
+            <div class="gauge-row">
+              <div class="g-info">
+                <span class="g-name">BARRIER FORTITUDE (DEF)</span>
+                <span class="g-val" id="g-def-val">740</span>
+              </div>
+              <div class="g-track">
+                <div class="g-fill" id="g-def-bar" style="width: 74%;"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Operative Ability Dossier -->
+          <div class="dossier-ability-box">
+            <div class="ability-title-row">
+              <span class="ability-tag">SIGNATURE WEAPON & SKILL</span>
+              <span class="ability-name" id="op-skill-name">BELIEF CONVERGENCE : POINT-BLANK</span>
+            </div>
+            <p class="ability-desc" id="op-skill-desc">
+              Channels total civic faith into a single directional kinetic release. 
+              Pierces any temporal barrier and resets enemy threat ranks to zero.
+            </p>
+          </div>
+
+          <div class="dossier-action-bar">
+            <button type="button" class="chamfer-btn squad-select-btn" id="deploy-op-btn">
+              <span class="btn-slice"></span>
+              <span class="btn-text">DEPLOY OPERATIVE TO SQUAD LEAD</span>
+            </button>
+
+            <button type="button" class="chamfer-btn sfx-op-btn" id="voice-line-btn">
+              <span class="btn-slice"></span>
+              <span class="btn-text">PLAY VOICE LINE [SFX]</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Component 4: Comic SFX Kinetic Shifter -->
+    <section class="hud-section comic-sfx-section">
+      <div class="section-badge-bar">
+        <div class="badge-cut-tag cyan-tag">SYSTEM 04</div>
+        <h2 class="section-heading">MANGA KINETIC SFX SOUNDBOARD</h2>
+        <div class="section-line"></div>
+        <div class="section-tag-right">CLICK TO DETONATE VISUAL IMPACTS</div>
+      </div>
+
+      <div class="sfx-board-grid">
+        
+        <button type="button" class="sfx-trigger-card" data-sfx-text="DON!" data-sfx-kanji="ドォン!" data-sfx-tone="impact">
+          <div class="sfx-card-inner">
+            <span class="sfx-kanji-big">ドォン!</span>
+            <span class="sfx-title">DON!</span>
+            <span class="sfx-desc">HEAVY FIST IMPACT</span>
+          </div>
+        </button>
+
+        <button type="button" class="sfx-trigger-card" data-sfx-text="KASHIN!" data-sfx-kanji="カキィン!" data-sfx-tone="slash">
+          <div class="sfx-card-inner">
+            <span class="sfx-kanji-big">カキィン!</span>
+            <span class="sfx-title">KASHIN!</span>
+            <span class="sfx-desc">METALLIC BLADE DEFLECT</span>
+          </div>
+        </button>
+
+        <button type="button" class="sfx-trigger-card" data-sfx-text="ACTIVATE!" data-sfx-kanji="起動!" data-sfx-tone="activate">
+          <div class="sfx-card-inner">
+            <span class="sfx-kanji-big">起動!</span>
+            <span class="sfx-title">ACTIVATE!</span>
+            <span class="sfx-desc">HERO TRUST BOOSTER</span>
+          </div>
+        </button>
+
+        <button type="button" class="sfx-trigger-card" data-sfx-text="CRITICAL!" data-sfx-kanji="会心!" data-sfx-tone="critical">
+          <div class="sfx-card-inner">
+            <span class="sfx-kanji-big">会心!</span>
+            <span class="sfx-title">CRITICAL!</span>
+            <span class="sfx-desc">ALL-OUT WEAKNESS HIT</span>
+          </div>
+        </button>
+
+        <button type="button" class="sfx-trigger-card" data-sfx-text="SLASH!!" data-sfx-kanji="ズバッ!!" data-sfx-tone="slash">
+          <div class="sfx-card-inner">
+            <span class="sfx-kanji-big">ズバッ!!</span>
+            <span class="sfx-title">SLASH!!</span>
+            <span class="sfx-desc">HIGH FREQUENCY RAZOR</span>
+          </div>
+        </button>
+
+        <button type="button" class="sfx-trigger-card sfx-allout-card" data-sfx-text="ALL-OUT!!" data-sfx-kanji="総攻撃!!" data-sfx-tone="allout">
+          <div class="sfx-card-inner">
+            <span class="sfx-kanji-big">総攻撃!!</span>
+            <span class="sfx-title">ALL-OUT!!</span>
+            <span class="sfx-desc">FULL FINISHING BLOW</span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- Real-Time Tactical Comms Log -->
+    <section class="hud-section console-section">
+      <div class="section-badge-bar">
+        <div class="badge-cut-tag">TERMINAL 05</div>
+        <h2 class="section-heading">TACTICAL ENGAGEMENT LOG</h2>
+        <div class="section-line"></div>
+        <div class="section-tag-right">SECURE FEED 128-BIT</div>
+      </div>
+
+      <div class="tactical-log-terminal">
+        <div class="terminal-bar">
+          <div class="t-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-title">TERMINAL // HERO-TRUST-EVENT-STREAM.LOG</div>
+          <button type="button" class="clear-log-btn" id="clear-log-btn">CLEAR</button>
+        </div>
+        <div class="terminal-body" id="terminal-body" role="log" aria-live="polite">
+          <div class="t-line"><span class="t-time">[00:00:01]</span> <span class="t-cyan">INIT:</span> KINETIC ANIME HUD ENGINE ARMED.</div>
+          <div class="t-line"><span class="t-time">[00:00:02]</span> <span class="t-cyan">AUTH:</span> TO BE HERO X & P3R PROTOCOLS SYNCHRONIZED.</div>
+          <div class="t-line"><span class="t-time">[00:00:03]</span> <span class="t-lime">READY:</span> TRUST VALUE SLIDER INITIALIZED AT 64% [RANK B ENFORCER].</div>
+          <div class="t-line"><span class="t-time">[00:00:04]</span> <span class="t-coral">NOTICE:</span> OPERATIVE HERO X READY FOR SORTIE.</div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="footer" id="contact">
-    <p>© 2026 NEXUS//CYPHER — <span class="accent">TRUST NO ONE. VERIFY EVERYTHING.</span></p>
-    <p class="footer-sig">designed in the dark · rendered in Spectro Cyan</p>
+  <!-- Tactical Anime Footer -->
+  <footer class="tactical-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <span class="f-symbol">◢</span>
+          <span>TO BE HERO X // P3R SPECIFICATION</span>
+        </div>
+        <div class="footer-sub">
+          HAOLINERS / ANIPLEX / ATLUS INSPIRED INTERFACE. STANDALONE KINETIC ENGINE.
+        </div>
+      </div>
+
+      <div class="footer-center">
+        <span class="footer-motto">BELIEF FUELS THE BLADE. TRUST REWRITES THE SKY.</span>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-coords">SECTOR 04 // SHINJUKU METROPLEX</div>
+        <div class="footer-copy">© 2026 NEXUS KINETIC SYSTEM. ZERO EM-DASHES. ZERO AI PARTICLES.</div>
+      </div>
+    </div>
   </footer>
 
   <script src="app.js"></script>
