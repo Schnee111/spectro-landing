@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXUS//CYPHER — a sleek cyber interface. Enter the grid." />
+  <title>NEXUS//CYPHER — Enter the Grid</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Ambient particle field -->
+  <canvas id="grid" aria-hidden="true"></canvas>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top">
+      <span class="brand-glyph">◢</span>
+      <span class="brand-name">NEXUS//CYPHER</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#manifesto">Manifesto</a>
+      <a href="#modules">Modules</a>
+      <a href="#status">Status</a>
+      <a href="#contact" class="nav-cta">Initiate</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <p class="eyebrow">// SECTOR 7 · UPLINK SECURE</p>
+      <h1 class="hero-title">
+        <span class="line">DECRYPT THE</span>
+        <span class="line line-accent">FUTURE.</span>
+      </h1>
+      <p class="hero-sub">
+        A precision-engineered cyber interface for operators who demand
+        speed, clarity, and zero noise. Built for the edge of the grid.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#status">
+          <span class="btn-label">Initialize Uplink</span>
+          <span class="btn-glow" aria-hidden="true"></span>
+        </a>
+        <a class="btn btn-ghost" href="#manifesto">Read the Dossier</a>
+      </div>
+      <dl class="hero-stats">
+        <div class="stat">
+          <dt>LATENCY</dt>
+          <dd>1.2ms</dd>
+        </div>
+        <div class="stat">
+          <dt>UPTIME</dt>
+          <dd>99.99%</dd>
+        </div>
+        <div class="stat">
+          <dt>NODES</dt>
+          <dd>8.4M</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Manifesto -->
+    <section class="manifesto" id="manifesto">
+      <h2 class="section-title"><span class="idx">01</span> MANIFESTO</h2>
+      <p class="lede">
+        The old interfaces whisper. Ours <em>transmits</em> — every pixel
+        deliberate, every frame animated with intent, every interaction
+        traced in Spectro Cyan.
+      </p>
+    </section>
+
+    <!-- Modules / feature cards -->
+    <section class="modules" id="modules">
+      <h2 class="section-title"><span class="idx">02</span> MODULES</h2>
+      <div class="cards">
+        <article class="card">
+          <span class="card-tag">DATA</span>
+          <h3>Ghost Tracing</h3>
+          <p>Follow signal signatures across layers of encrypted traffic with real-time route mapping.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">DEFENSE</span>
+          <h3>Zero-Day Shielding</h3>
+          <p>Adaptive countermeasures that learn each intrusion pattern and neutralize it before impact.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">OPS</span>
+          <h3>Quantum Relay</h3>
+          <p>Route critical payloads through entangled node clusters for unbreakable, instant delivery.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Interactive status console -->
+    <section class="console" id="status">
+      <h2 class="section-title"><span class="idx">03</span> SYSTEM STATUS</h2>
+      <div class="console-panel">
+        <div class="console-head">
+          <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="console-file">uplink_console.sh</span>
+        </div>
+        <div class="console-body">
+          <p class="log-line">&gt; handshake established… <span class="ok">OK</span></p>
+          <p class="log-line">&gt; authenticating operator… <span class="ok">OK</span></p>
+          <p class="log-line">&gt; core integrity scan… <span class="pulse-text" id="integrity">VERIFYING</span></p>
+
+          <div class="status-card" id="status-card">
+            <div class="status-readout">
+              <span class="status-dot" id="status-dot" aria-hidden="true"></span>
+              <div>
+                <span class="status-label">UPLINK</span>
+                <output class="status-value" id="status-value">ONLINE</output>
+              </div>
+              <span class="status-band" id="status-band">SECURE</span>
+            </div>
+            <p class="status-meta" id="status-meta">
+              All systems nominal. Encrypted tunnel active across 8,400 relay nodes.
+            </p>
+            <button class="btn btn-toggle" id="toggle-btn" type="button" aria-pressed="true">
+              <span class="btn-label">Toggle Uplink</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <p>© 2026 NEXUS//CYPHER — <span class="accent">TRUST NO ONE. VERIFY EVERYTHING.</span></p>
+    <p class="footer-sig">designed in the dark · rendered in Spectro Cyan</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
